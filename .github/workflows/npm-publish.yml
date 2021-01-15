@@ -13,7 +13,6 @@ jobs:
       - name: This should fail!
         run: echo "You can only deploy main branches"; exit 1
   publish-npm-only-for-main:
-    
     needs: pre-checks
     runs-on: ubuntu-latest
     steps:
