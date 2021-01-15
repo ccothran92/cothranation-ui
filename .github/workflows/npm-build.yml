@@ -16,14 +16,8 @@ jobs:
     if: github.event_name.push.branches == 'master'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Echo Something
+        run: echo "Hello world"
   this-should-run-only-on-pushes: 
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
