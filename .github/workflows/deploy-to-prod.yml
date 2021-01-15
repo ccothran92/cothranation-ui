@@ -29,7 +29,7 @@ on: workflow_dispatch
 
 jobs:
   deploy-to-prod-npm:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' &&  ${{ success() }}
     needs: build
     runs-on: ubuntu-latest
     steps:
