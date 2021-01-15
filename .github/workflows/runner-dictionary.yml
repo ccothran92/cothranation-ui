@@ -1,7 +1,7 @@
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
-name: NPM Build 
+name: Runner Sandbox
 on: [push, pull_request, workflow_dispatch, release]
 jobs: 
   always-run: 
