@@ -1,0 +1,13 @@
+{
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "inferenceAccelerators": [],
+    "containerDefinitions": [],
+    "volumes": [],
+    "networkMode": null,
+    "memory": null,
+    "cpu": null,
+    "placementConstraints": [],
+    "tags": []
+}

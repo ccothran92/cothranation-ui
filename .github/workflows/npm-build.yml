@@ -12,3 +12,27 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+  this-should-run-on-master: 
+    if: github.event_name.branches == 'main'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+  this-should-run-on-pushes: 
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
