@@ -25,7 +25,7 @@
 
 on:
   release:
-    types: [created]
+    types: [created, edited, published, prereleased]
 
 name: Deploy to Amazon ECS
 jobs:
