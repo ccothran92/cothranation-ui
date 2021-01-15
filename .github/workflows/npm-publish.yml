@@ -6,9 +6,15 @@ on:
     workflows: ["NPM Build"]
 
 jobs:
+  pre-checks:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps: 
+      - name: This should fail!
+        run: echo "Please fail!"
   publish-npm-only-for-main:
-    if: github.ref == 'refs/heads/main'
-    needs: build
+    
+    needs: pre-checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
