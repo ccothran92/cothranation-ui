@@ -13,7 +13,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
   this-should-run-on-master: 
-    if: github.event_name.push.branches == 'master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Echo Something
