@@ -25,14 +25,21 @@ jobs:
 
 name: Deploy To Prod
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
-  publish-npm:
+  deploy-to-prod-npm:
     if: github.ref == 'refs/heads/master'
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: test
+      - name: Deploying to Prod
         run: echo "Hello World"
+  error-out-if-not-main:
+    if: github.ref != 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Error
+        run: echo "You cannot deploy branches into PROD!"
+
