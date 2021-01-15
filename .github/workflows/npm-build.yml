@@ -24,10 +24,13 @@ jobs:
     steps:
       - name: Echo Something
         run: echo "Hello world"
+      - name: print GitHub
+        run: echo ${github}
   this-should-run-only-on-pull-requests: 
     if: github.event_name == 'pull-request'
     runs-on: ubuntu-latest
     steps:
       - name: Echo Something
         run: echo "Hello world"
+
 
