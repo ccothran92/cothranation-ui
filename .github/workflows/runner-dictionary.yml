@@ -32,12 +32,12 @@ jobs:
         run: echo "${{github.base_ref}}"
       - name: Print head ref, the source branch of a PR
         run: echo "${{github.head_ref}}"
-  this-should-run-for-tags-with-stable:
-    if: github.ref == refs/tags/*stable
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Something
-        run: echo "Hello world"
+  # this-should-run-for-tags-with-stable:
+  #   if: github.ref == refs/tags/*stable
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Echo Something
+  #       run: echo "Hello world"
   print-env:
     runs-on: ubuntu-latest
     steps:
