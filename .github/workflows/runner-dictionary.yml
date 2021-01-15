@@ -1,0 +1,61 @@
+#https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions
+name: NPM Build 
+on: [push, pull_request, workflow_dispatch, release]
+jobs: 
+  always-run: 
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Echo Something
+        run: echo "Hello world"
+      - name: print the run ID
+        run: echo "${{ github.run_id}}"
+  this-should-run-on-master: 
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Something
+        run: echo "Hello world"
+  this-should-run-only-on-pushes: 
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Something
+        run: echo "Hello world"
+  this-should-run-only-on-pull-requests: 
+    if: github.event_name == 'pull-request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Base Ref, the target branch of a PR
+        run: echo "${{github.base_ref}}"
+      - name: Print head ref, the source branch of a PR
+        run: echo "${{github.head_ref}}"
+  
+  print-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+
